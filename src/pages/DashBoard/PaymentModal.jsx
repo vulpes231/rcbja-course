@@ -59,7 +59,7 @@ const PaymentModal = ({ onClose, course }) => {
 
                 <div>
                   <h3 className="font-semibold text-slate-900 text-lg">
-                    Tuition Payment
+                    Enrollment Fee
                   </h3>
 
                   <p className="text-slate-500 text-sm mt-1">
@@ -69,7 +69,9 @@ const PaymentModal = ({ onClose, course }) => {
               </div>
 
               <div className="bg-slate-100 rounded-2xl p-4 flex items-center justify-between">
-                <span className="text-slate-500 font-medium">Tuition Fee</span>
+                <span className="text-slate-500 font-medium">
+                  Enrollment Fee
+                </span>
 
                 <span className="text-2xl font-bold text-blue-600">$1,000</span>
               </div>
