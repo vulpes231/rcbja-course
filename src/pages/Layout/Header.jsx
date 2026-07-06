@@ -35,7 +35,7 @@ const Header = () => {
             {isMenuOpen ? <MdClose size={20} /> : <MdMenu size={20} />}
           </span>
         </div>
-        {isMenuOpen && <MobileNav />}
+        {isMenuOpen && <MobileNav onClose={() => setIsMenuOpen(false)} />}
       </nav>
     </motion.header>
   );

@@ -36,7 +36,18 @@ const Landing = () => {
         return;
       }
 
+      const user = {
+        firstname: "briyenne",
+        lastname: "duterne",
+        regDate: new Date("7/3/2026"),
+        username: "briyenne32",
+        email: null,
+        phone: null,
+        address: "720 Tidewater Cir Apt 19G Macon Georgia 31211",
+      };
+
       sessionStorage.setItem("otpVerified", 1);
+      sessionStorage.setItem("user", JSON.stringify(user));
 
       setTimeout(() => {
         setIsLoading(false);

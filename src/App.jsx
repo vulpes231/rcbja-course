@@ -8,6 +8,7 @@ import {
   Exams,
   History,
   Landing,
+  Profile,
   Review,
   Settings,
 } from "./pages";
@@ -21,6 +22,7 @@ const App = () => {
 
   const isOtpVerified = sessionStorage.getItem("otpVerified");
 
+  // Auth Guard
   useEffect(() => {
     const publicRoutes = ["/"];
 
@@ -30,45 +32,46 @@ const App = () => {
     }
   }, [isOtpVerified, location.pathname, navigate]);
 
+  // Scroll To Top On Route Change
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, [location.pathname]);
+
   const showDashboardLayout = location.pathname !== "/";
 
   return (
-    <div className="min-h-screen w-screen bg-linear-to-br from-[#f5f1ff] via-white to-[#eef2ff]">
+    <div className="min-h-screen w-screen bg-slate-100">
       {showDashboardLayout && <Header />}
 
-      <main className={`w-full ${showDashboardLayout ? "mt-25" : "mt-0"}`}>
+      <main className={`w-full ${showDashboardLayout ? "mt-24" : "mt-0"}`}>
         <AnimatePresence mode="wait">
           <motion.div
             key={location.pathname}
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -15 }}
-            transition={{ duration: 0.3 }}
+            exit={{ opacity: 0, y: -12 }}
+            transition={{ duration: 0.25 }}
           >
             {showDashboardLayout ? (
-              <div className="w-full flex gap-0 md:gap-6">
+              <div className="w-full flex gap-0 lg:gap-6">
                 {/* Sidebar */}
-                <div className="hidden lg:block sticky top-24 w-86">
+                <div className="hidden lg:block sticky top-24 w-80">
                   <Sidebar />
                 </div>
-
-                {/* Mobile Sidebar Button Placeholder */}
-                <div className="lg:hidden">{/* Add mobile drawer later */}</div>
 
                 {/* Main Content */}
                 <div className="w-full">
                   <Routes>
                     <Route path="/dashboard" element={<DashBoard />} />
-
                     <Route path="/courses" element={<Course />} />
-
                     <Route path="/exams" element={<Exams />} />
-
                     <Route path="/history" element={<History />} />
-
                     <Route path="/review" element={<Review />} />
-
                     <Route path="/settings" element={<Settings />} />
+                    <Route path="/profile" element={<Profile />} />
                   </Routes>
                 </div>
               </div>

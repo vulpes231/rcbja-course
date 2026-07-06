@@ -12,8 +12,9 @@ import { BsGear } from "react-icons/bs";
 import { IoMdLogOut } from "react-icons/io";
 import { FaLock } from "react-icons/fa";
 import { BiSolidUserCircle } from "react-icons/bi";
+import { FaRegUser } from "react-icons/fa6";
 
-const MobileNav = () => {
+const MobileNav = ({ onClose }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const [activeLink, setActiveLink] = useState("");
@@ -24,6 +25,13 @@ const MobileNav = () => {
         label: "Dashboard",
         path: "/dashboard",
         icon: <AiOutlineHome />,
+        isLocked: false,
+      },
+      {
+        id: "profile",
+        label: "Profile",
+        path: "/profile",
+        icon: <FaRegUser />,
         isLocked: false,
       },
       {
@@ -96,6 +104,7 @@ const MobileNav = () => {
 
                   setActiveLink(link.path);
                   navigate(link.path);
+                  onClose();
                 }}
                 to={link.path}
                 className={`flex items-center justify-between px-4 py-3 rounded-2xl transition-all duration-300 group

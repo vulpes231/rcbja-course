@@ -9,8 +9,9 @@ import { VscOpenPreview } from "react-icons/vsc";
 import { MdOutlineHistory } from "react-icons/md";
 import { BsGear } from "react-icons/bs";
 import { IoMdLogOut } from "react-icons/io";
-import { FaLock } from "react-icons/fa";
+import { FaLock, FaRegUser } from "react-icons/fa";
 import { BiSolidUserCircle } from "react-icons/bi";
+import { FaUser } from "react-icons/fa6";
 
 const Sidebar = () => {
   const location = useLocation();
@@ -24,6 +25,13 @@ const Sidebar = () => {
         label: "Dashboard",
         path: "/dashboard",
         icon: <AiOutlineHome />,
+        isLocked: false,
+      },
+      {
+        id: "profile",
+        label: "Profile",
+        path: "/profile",
+        icon: <FaRegUser />,
         isLocked: false,
       },
       {
