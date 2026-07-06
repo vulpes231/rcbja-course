@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import ProfileDropDown from "./ProfileDropDown";
 import Notification from "./Notification";
 import { logo } from "../../assets";
+import { MdClose, MdMenu } from "react-icons/md";
+import MobileNav from "./MobileNav";
 
 const Header = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
     <motion.header
       initial={{ y: -80, opacity: 0 }}
@@ -25,7 +28,14 @@ const Header = () => {
         <div className="flex gap-6 items-center">
           <Notification />
           <ProfileDropDown />
+          <span
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="flex md:hidden "
+          >
+            {isMenuOpen ? <MdClose size={20} /> : <MdMenu size={20} />}
+          </span>
         </div>
+        {isMenuOpen && <MobileNav />}
       </nav>
     </motion.header>
   );

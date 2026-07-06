@@ -24,7 +24,7 @@ const CourseList = () => {
         points: 50,
       },
 
-      completion: 65,
+      completion: 85,
     },
   ];
 

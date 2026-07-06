@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+
 import { motion } from "framer-motion";
 
 import { AiOutlineHome } from "react-icons/ai";
@@ -12,11 +13,10 @@ import { IoMdLogOut } from "react-icons/io";
 import { FaLock } from "react-icons/fa";
 import { BiSolidUserCircle } from "react-icons/bi";
 
-const Sidebar = () => {
+const MobileNav = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [activeLink, setActiveLink] = useState("");
-
   const links = useMemo(() => {
     return [
       {
@@ -74,28 +74,9 @@ const Sidebar = () => {
       window.location.href = "/";
     }, 1000);
   };
-
   return (
-    <motion.aside
-      initial={{ x: -80, opacity: 0 }}
-      animate={{ x: 0, opacity: 1 }}
-      transition={{ duration: 0.4 }}
-      className="bg-white/80 backdrop-blur-lg border border-white/30 shadow-xl p-6 w-80 rounded-3xl h-full"
-    >
-      {/* Profile */}
-      <div className="flex items-center gap-3 pb-6 border-b border-slate-200">
-        <div className="bg-[#f3efff] p-2 rounded-2xl">
-          <BiSolidUserCircle className="text-5xl text-[#5162be]" />
-        </div>
-
-        <div>
-          <h2 className="font-bold text-slate-800">Briyenne Duterne</h2>
-          <p className="text-sm text-[#5162be] font-medium">Premium User</p>
-        </div>
-      </div>
-
-      {/* Links */}
-      <div className="flex flex-col gap-2 mt-6">
+    <div className="fixed top-27.5 right-4 w-80 bg-white rounded-2xl shadow-xl">
+      <div className="flex flex-col gap-2 p-4">
         {links.map((link) => {
           const isActive = activeLink === link.path;
 
@@ -156,13 +137,13 @@ const Sidebar = () => {
         onClick={handleLogout}
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.96 }}
-        className="mt-8 flex items-center gap-3 w-full px-4 py-3 rounded-2xl bg-red-50 text-red-500 hover:bg-red-100 transition-all duration-300 cursor-pointer"
+        className="mt-8 flex items-center gap-3 w-full px-4 py-3 rounded-2xl bg-red-50 text-red-500 hover:bg-red-100 transition-all duration-300 cursor-pointer mb-2"
       >
         <IoMdLogOut className="text-xl" />
         <span className="font-medium">Logout</span>
       </motion.button>
-    </motion.aside>
+    </div>
   );
 };
 
-export default Sidebar;
+export default MobileNav;

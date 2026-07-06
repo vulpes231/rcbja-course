@@ -34,9 +34,9 @@ const App = () => {
 
   return (
     <div className="min-h-screen w-screen bg-linear-to-br from-[#f5f1ff] via-white to-[#eef2ff]">
-      <Header />
+      {showDashboardLayout && <Header />}
 
-      <main className="w-full mt-25">
+      <main className={`w-full ${showDashboardLayout ? "mt-25" : "mt-0"}`}>
         <AnimatePresence mode="wait">
           <motion.div
             key={location.pathname}

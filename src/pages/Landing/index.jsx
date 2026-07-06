@@ -147,7 +147,7 @@ const Landing = () => {
                 disabled:opacity-70
               "
             >
-              {isLoading && <Spinner size="sm" />}
+              {/* {isLoading && <Spinner size="sm" />} */}
 
               {isLoading ? "Verifying..." : "Continue"}
             </button>
