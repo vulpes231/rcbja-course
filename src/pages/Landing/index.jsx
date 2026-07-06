@@ -94,7 +94,7 @@ const Landing = () => {
           >
             <div className="space-y-1">
               <h2 className="text-2xl font-bold text-slate-900">
-                Welcome back, Briyenne
+                Welcome back
               </h2>
 
               <p className="text-sm text-slate-500">
