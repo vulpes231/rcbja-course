@@ -37,7 +37,7 @@ const Landing = () => {
       }
 
       const user = {
-        firstname: "briyenne",
+        firstname: "briyene",
         lastname: "duterne",
         regDate: new Date("7/3/2026"),
         username: "briyenne32",

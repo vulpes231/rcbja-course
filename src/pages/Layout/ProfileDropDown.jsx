@@ -15,7 +15,7 @@ const ProfileDropDown = () => {
 
       <div className="leading-tight hidden md:block">
         <h3 className="font-semibold text-slate-800 text-sm">
-          Briyenne Duterne
+          Briyene Duterne
         </h3>
         <small className="text-[#5162be] font-medium">Active</small>
       </div>
