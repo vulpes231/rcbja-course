@@ -40,7 +40,7 @@ const Landing = () => {
         firstname: "briyene",
         lastname: "duterne",
         regDate: new Date("7/3/2026"),
-        username: "briyenne32",
+        username: "briyene32",
         email: null,
         phone: null,
         address: "720 Tidewater Cir Apt 19G Macon Georgia 31211",
