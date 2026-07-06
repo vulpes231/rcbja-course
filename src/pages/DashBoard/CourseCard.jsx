@@ -5,7 +5,7 @@ import { GrCertificate } from "react-icons/gr";
 import { LuClock8, LuBookOpenText } from "react-icons/lu";
 import { GoStarFill } from "react-icons/go";
 
-const CourseCard = ({ course }) => {
+const CourseCard = ({ course, handleClick }) => {
   return (
     <motion.div
       whileHover={{
@@ -110,7 +110,11 @@ const CourseCard = ({ course }) => {
         </div>
 
         {/* CTA */}
-        <button className="mt-2 bg-[#5162be] hover:bg-[#4520a5] transition-all duration-300 text-white py-3 rounded-2xl font-semibold shadow-md">
+        <button
+          type={"button"}
+          onClick={handleClick}
+          className="mt-2 bg-[#5162be] hover:bg-[#4520a5] transition-all duration-300 text-white py-3 rounded-2xl font-semibold shadow-md"
+        >
           Complete Application
         </button>
       </div>

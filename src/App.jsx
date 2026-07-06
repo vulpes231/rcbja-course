@@ -33,10 +33,10 @@ const App = () => {
   const showDashboardLayout = location.pathname !== "/";
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#f5f1ff] via-white to-[#eef2ff]">
+    <div className="min-h-screen w-screen bg-linear-to-br from-[#f5f1ff] via-white to-[#eef2ff]">
       <Header />
 
-      <main className="pt-24 px-4 md:px-6">
+      <main className="w-full mt-25">
         <AnimatePresence mode="wait">
           <motion.div
             key={location.pathname}
@@ -46,9 +46,9 @@ const App = () => {
             transition={{ duration: 0.3 }}
           >
             {showDashboardLayout ? (
-              <div className="max-w-7xl mx-auto flex gap-6 items-start">
+              <div className="w-full flex gap-0 md:gap-6">
                 {/* Sidebar */}
-                <div className="hidden lg:block sticky top-24">
+                <div className="hidden lg:block sticky top-24 w-86">
                   <Sidebar />
                 </div>
 
@@ -56,7 +56,7 @@ const App = () => {
                 <div className="lg:hidden">{/* Add mobile drawer later */}</div>
 
                 {/* Main Content */}
-                <div className="flex-1 min-w-0">
+                <div className="w-full">
                   <Routes>
                     <Route path="/dashboard" element={<DashBoard />} />
 

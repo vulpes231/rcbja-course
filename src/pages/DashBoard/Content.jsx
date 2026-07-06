@@ -9,7 +9,7 @@ const Content = () => {
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="bg-white/70 backdrop-blur-lg border border-white/30 shadow-xl p-6 rounded-3xl w-full flex flex-col gap-6"
+      className="bg-white/70 backdrop-blur-lg  p-6 rounded-3xl w-full flex flex-col gap-6 shadow-xl"
     >
       <div>
         <h1 className="text-3xl font-bold text-slate-800">

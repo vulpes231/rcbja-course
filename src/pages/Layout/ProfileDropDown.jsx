@@ -13,7 +13,7 @@ const ProfileDropDown = () => {
         <BiSolidUserCircle className="text-4xl text-[#5162be]" />
       </div>
 
-      <div className="leading-tight">
+      <div className="leading-tight hidden md:block">
         <h3 className="font-semibold text-slate-800 text-sm">
           Briyenne Duterne
         </h3>

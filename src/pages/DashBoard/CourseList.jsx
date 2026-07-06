@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import CourseCard from "./CourseCard";
+import PaymentModal from "./PaymentModal";
 
 const CourseList = () => {
+  const [course, setCourse] = useState("");
+  const [showModal, setShowModal] = useState(false);
   const availableCourses = [
     {
       id: 1,
@@ -25,6 +28,12 @@ const CourseList = () => {
     },
   ];
 
+  const handleClick = (crs) => {
+    console.log("clcicked show modal");
+    setCourse(crs);
+    setShowModal(true);
+  };
+
   return (
     <div className="flex flex-col gap-5">
       <div className="flex items-center justify-between">
@@ -43,9 +52,16 @@ const CourseList = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
         {availableCourses.map((course) => (
-          <CourseCard course={course} key={course.id} />
+          <CourseCard
+            course={course}
+            key={course.id}
+            handleClick={() => handleClick(course)}
+          />
         ))}
       </div>
+      {showModal && (
+        <PaymentModal course={course} onClose={() => setShowModal(false)} />
+      )}
     </div>
   );
 };
