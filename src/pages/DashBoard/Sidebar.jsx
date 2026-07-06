@@ -1,5 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
+
 import { AiOutlineHome } from "react-icons/ai";
 import { IoBookOutline } from "react-icons/io5";
 import { LuBookmarkCheck } from "react-icons/lu";
@@ -8,6 +10,7 @@ import { MdOutlineHistory } from "react-icons/md";
 import { BsGear } from "react-icons/bs";
 import { IoMdLogOut } from "react-icons/io";
 import { FaLock } from "react-icons/fa";
+import { BiSolidUserCircle } from "react-icons/bi";
 
 const Sidebar = () => {
   const location = useLocation();
@@ -25,7 +28,7 @@ const Sidebar = () => {
       },
       {
         id: "courses",
-        label: "Enrolled Courses",
+        label: "Courses",
         path: "/courses",
         icon: <IoBookOutline />,
         isLocked: true,
@@ -64,42 +67,93 @@ const Sidebar = () => {
   useEffect(() => {
     setActiveLink(location.pathname);
   }, [location.pathname]);
-  return (
-    <div className="bg-white p-4">
-      <p>Welcome, Briyenne Duterne</p>
-      <div className="flex flex-col gap-3 mt-4">
-        {links.map((link) => {
-          return (
-            <Link
-              onClick={(e) => {
-                e.preventDefault();
-                if (link.isLocked) {
-                  return;
-                }
-                setActiveLink(link.path);
-                navigate(link.path);
-              }}
-              className={`flex items-center justify-between ${activeLink === link.path ? "text-purple-500" : ""}`}
-              key={link.id}
-              to={link.path}
-            >
-              <div className="flex items-center gap-2">
-                {" "}
-                <span>{link.icon}</span>
-                <span> {link.label}</span>
-              </div>
 
-              <span>{link.isLocked && <FaLock />}</span>
-            </Link>
+  return (
+    <motion.aside
+      initial={{ x: -80, opacity: 0 }}
+      animate={{ x: 0, opacity: 1 }}
+      transition={{ duration: 0.4 }}
+      className="bg-white/80 backdrop-blur-lg border border-white/30 shadow-xl p-6 w-80 rounded-3xl h-full"
+    >
+      {/* Profile */}
+      <div className="flex items-center gap-3 pb-6 border-b border-slate-200">
+        <div className="bg-[#f3efff] p-2 rounded-2xl">
+          <BiSolidUserCircle className="text-5xl text-[#5162be]" />
+        </div>
+
+        <div>
+          <h2 className="font-bold text-slate-800">Briyenne Duterne</h2>
+          <p className="text-sm text-[#5162be] font-medium">Premium User</p>
+        </div>
+      </div>
+
+      {/* Links */}
+      <div className="flex flex-col gap-2 mt-6">
+        {links.map((link) => {
+          const isActive = activeLink === link.path;
+
+          return (
+            <motion.div
+              whileHover={{
+                x: 4,
+              }}
+              whileTap={{ scale: 0.98 }}
+              key={link.id}
+            >
+              <Link
+                onClick={(e) => {
+                  e.preventDefault();
+
+                  if (link.isLocked) return;
+
+                  setActiveLink(link.path);
+                  navigate(link.path);
+                }}
+                to={link.path}
+                className={`flex items-center justify-between px-4 py-3 rounded-2xl transition-all duration-300 group
+                  
+                  ${
+                    isActive
+                      ? "bg-[#5162be] text-white shadow-lg"
+                      : "text-slate-600 hover:bg-[#f5f1ff]"
+                  }
+                `}
+              >
+                <div className="flex items-center gap-3">
+                  <span
+                    className={`text-xl ${
+                      isActive ? "text-white" : "text-[#5162be]"
+                    }`}
+                  >
+                    {link.icon}
+                  </span>
+
+                  <span className="font-medium">{link.label}</span>
+                </div>
+
+                {link.isLocked && (
+                  <FaLock
+                    className={`text-sm ${
+                      isActive ? "text-white" : "text-slate-400"
+                    }`}
+                  />
+                )}
+              </Link>
+            </motion.div>
           );
         })}
-        <span>
-          <button className={`flex items-center gap-2`}>
-            <IoMdLogOut /> Logout
-          </button>
-        </span>
       </div>
-    </div>
+
+      {/* Logout */}
+      <motion.button
+        whileHover={{ scale: 1.02 }}
+        whileTap={{ scale: 0.96 }}
+        className="mt-8 flex items-center gap-3 w-full px-4 py-3 rounded-2xl bg-red-50 text-red-500 hover:bg-red-100 transition-all duration-300"
+      >
+        <IoMdLogOut className="text-xl" />
+        <span className="font-medium">Logout</span>
+      </motion.button>
+    </motion.aside>
   );
 };
 
